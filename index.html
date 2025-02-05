@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notebook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> <!-- Aggiungi il font -->
+    <link href="img/logo.jpg" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive; /* Applica il font digitale a tutto il corpo */
+        }
+
+        .header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #37009c 0%, #0090cd 100%);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            z-index: 1;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .logo-text {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .hero {
+            position: relative;
+            height: 60vh;
+            background-image: url('img/background.jpg');
+            background-size: cover;
+            background-position: center;
+            margin-top: 0px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: nowrap;
+            padding: 20px 0;
+        }
+
+        .link-text {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            display: block;
+            flex: 1;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 1;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-title {
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .link-text:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .link-text:hover .image-title {
+            transform: translateY(0);
+        }
+
+        .link-text:hover img {
+            transform: scale(1.1);
+        }
+
+        main {
+            margin-bottom: 40px;
+            padding-top: 80px;
+        }
+
+        @media (max-width: 1200px) {
+            .gallery {
+                flex-wrap: wrap;
+            }
+            .link-text {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        .new-container {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: row; /* Imposta la direzione delle righe per la divisione verticale */
+            width: 95%;
+            max-width: 1400px;
+            margin: 40px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Nasconde eventuali overflow */
+        }
+
+        .text-section {
+            background-color: #f0f0f0; /* Colore di sfondo per la sezione di testo */
+            padding: 20px;
+            flex: 1; /* Occupa metà dello spazio disponibile */
+            line-height: 1.5em;
+        }
+
+        .text-title {
+            background-color: #f0f0f0;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #19297C;
+            line-height: 2.0em;
+        }
+
+        .text-content {
+            background-color: #f0f0f0;
+            font-size: 1.0em;
+            color: #393E41; /* Colore del testo */
+        }
+
+        .image-section {
+            flex: 1; /* Occupa metà dello spazio disponibile */
+        }
+
+        .section-image {
+            width: 100%;
+            height: auto; /* Mantiene le proporzioni */
+            object-fit: cover; /* Copre l'area senza distorsioni */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="img/logo.png" alt="Logo" class="logo-image">
+            <span class="logo-text">NOTEBOOK</span>
+        </a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-overlay">
+                <h1 class="hero-title">Benvenuto</h1>
+                <p class="hero-subtitle">Scopri i nostri notebook</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="gallery">
+                <a href="Titanic.html" class="link-text">
+                    <div class="image-container">
+                        <img src="img/titanic.jpg" alt="titanic">
+                        <div class="image-overlay">
+                            <span class="image-title">Titanic</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="Galton.html" class="link-text">
+                    <div class="image-container">
+                        <img src="img/galton.jpg" alt="galton">
+                        <div class="image-overlay">
+                            <span class="image-title">Galton</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="notebook3.html" class="link-text">
+                    <div class="image-container">
+                        <img src="img/news.jpg" alt="news">
+                        <div class="image-overlay">
+                            <span class="image-title">News</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="notebook4.html" class="link-text">
+                    <div class="image-container">
+                        <img src="img/tesisquare.jpg" alt="tesisquare">
+                        <div class="image-overlay">
+                            <span class="image-title">Tesisquare</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="new-container">
+            <div class="text-section">
+                <h2 class="text-title">1️⃣ Raccolta e Pulizia dei Dati: Il Fondamento del Data Science</h2>
+                <p class="text-content">Il primo passo consiste nel raccogliere dati da diverse fonti, come database, API, file CSV o dati non strutturati. Una volta raccolti, i dati vengono puliti e pre-processati, eliminando valori mancanti, duplicati o incoerenze per garantire un'analisi affidabile.
+            </div>
+            <div class="image-section">
+                <img src="img/fase1.jpg" class="section-image">
+            </div>
+        </div>
+
+        <div class="new-container">
+            <div class="image-section">
+                <img src="img/fase2.jpg" class="section-image">
+            </div>
+            <div class="text-section">
+                <h2 class="text-title">2️⃣ Analisi Esplorativa e Modellazione</h2>
+                <p class="text-content">Dopo la pulizia, il Data Scientist esplora i dati per individuare pattern e correlazioni. Usa strumenti come Python, R e SQL per generare statistiche descrittive e visualizzazioni. Successivamente, applica modelli statistici e algoritmi di machine learning per fare previsioni o ottenere insight utili.
+            </div>
+        </div>
+
+
+        <div class="new-container">
+            <div class="text-section">
+                <h2 class="text-title">3️⃣ Interpretazione e Visualizzazione</h2>
+                <p class="text-content">Una volta ottenuti i risultati, è essenziale comunicarli in modo chiaro. Il Data Scientist utilizza dashboard interattive (con strumenti come Tableau o Power BI) e grafici per presentare i dati a stakeholder e manager, traducendo numeri complessi in decisioni aziendali concrete.
+            </div>
+            <div class="image-section">
+                <img src="img/fase3.jpg" class="section-image">
+            </div>
+        </div>
+
+
+        <div class="new-container">
+            <div class="image-section">
+                <img src="img/fase4.jpg" class="section-image">
+            </div>
+            <div class="text-section">
+                <h2 class="text-title">4️⃣ Implementazione e Ottimizzazione</h2>
+                <p class="text-content">L'ultimo passaggio riguarda l’implementazione dei modelli in sistemi reali, come applicazioni o software aziendali. I modelli vengono monitorati e migliorati nel tempo per garantire accuratezza e adattabilità a nuovi dati, rendendo il processo decisionale sempre più efficace.
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
